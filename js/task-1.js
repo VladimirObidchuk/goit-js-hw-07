@@ -1,55 +1,75 @@
 const categories = document.getElementById("categories");
 const categoriesItems = document.querySelectorAll("#categories .item");
-console.log(`В списке ${categories.length} категории.`);
+console.log(`В списке ${categoriesItems.length} категории.`);
+
+const addStyles = {
+  categories: {
+    listStyle: "none",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: "0",
+    margin: "0",
+  },
+  categoriesItem: {
+    marginBottom: "24px",
+    padding: "16px",
+    backgroundColor: "#f6f6fe",
+    borderRadius: "8px",
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    flexDirection: "column",
+    gap: "16px",
+    width: "392px",
+  },
+  categoriesItems: {
+    ul: {
+      listStyle: "none",
+      display: "flex",
+      flexDirection: "column",
+      gap: "8px",
+      padding: "0",
+    },
+    h2: {
+      fontWeight: 600,
+      margin: "0",
+      fontSize: "24px",
+      lineHeight: "1.34",
+      letterSpacing: "0.04em",
+      color: "#2e2f42",
+    },
+  },
+  categoriesItemsLi: {
+    display: "flex",
+    alignItems: "center",
+    width: "360px",
+    height: "40px",
+    border: "1px solid #808080",
+    borderRadius: "4px",
+    fontWeight: 400,
+    fontSize: "16px",
+    lineHeight: "1.5",
+    letterSpacing: "0.04em",
+    color: "#2e2f42",
+    padding: "16px",
+  },
+};
+Object.assign(categories.style, addStyles.categories);
+categoriesItems.forEach((Item) => {
+  Object.assign(Item.style, addStyles.categoriesItem);
+  Object.assign(Item.querySelector("h2").style, addStyles.categoriesItems.h2);
+  const innerUl = Item.querySelector("ul");
+  Object.assign(innerUl.style, addStyles.categoriesItems.ul);
+  const innerLis = Item.querySelectorAll("ul li");
+  innerLis.forEach((li) => {
+    Object.assign(li.style, addStyles.categoriesItemsLi);
+  });
+});
 categoriesItems.forEach((Item) => {
   const nameCategories = Item.querySelector("h2");
   const totalCategories = Item.querySelectorAll("ul li").length;
   const nameSubCategories = Item.querySelectorAll("ul li");
-  categories.style.listStyle = "none";
-  categories.style.display = "flex";
-  categories.style.flexDirection = "column";
-  categories.style.justifyContent = "space-between";
-  categories.style.padding = "0";
-  categories.style.margin = "0";
-
-  categoriesItems.forEach((el) => {
-    el.style.marginBottom = "24px";
-    el.style.padding = "16px";
-    el.style.backgroundColor = "#f6f6fe";
-    el.style.borderRadius = "8px";
-    el.style.display = "flex";
-    el.style.alignItems = "flex-start";
-    el.style.justifyContent = "flex-start";
-    el.style.flexDirection = "column";
-    el.style.gap = "16px";
-    el.style.width = "392px";
-
-    el.querySelector("ul").style.listStyle = "none";
-    el.querySelector("ul").style.display = "flex";
-    el.querySelector("ul").style.flexDirection = "column";
-    el.querySelector("ul").style.gap = "8px";
-    el.querySelector("ul").style.padding = "0";
-    el.querySelector("h2").style.fontWeight = 600;
-    el.querySelector("h2").style.margin = "0";
-    el.querySelector("h2").style.fontSize = "24px";
-    el.querySelector("h2").style.lineHeight = "1.34";
-    el.querySelector("h2").style.letterSpacing = "0.04em";
-    el.querySelector("h2").style.color = "#2e2f42";
-    el.querySelectorAll("ul li").forEach((li) => {
-      li.style.display = "flex";
-      li.style.alignItems = "center";
-      li.style.width = "360px";
-      li.style.height = "40px";
-      li.style.border = "1px solid #808080";
-      li.style.borderRadius = "4px";
-      li.style.fontWeight = 400;
-      li.style.fontSize = "16px";
-      li.style.lineHeight = "1.5";
-      li.style.letterSpacing = "0.04em";
-      li.style.color = "#2e2f42";
-      li.style.padding = "16px";
-    });
-  });
   console.log(
     `Categorie: ${nameCategories.textContent}` +
       "\n" +

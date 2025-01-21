@@ -26,6 +26,7 @@ button.style.border = "none";
 const span = document.querySelector(".color");
 button.addEventListener("click", () => {
   const randomColor = getRandomHexColor();
+  span.textContent = randomColor;
   document.body.style.backgroundColor = randomColor;
 });
 
